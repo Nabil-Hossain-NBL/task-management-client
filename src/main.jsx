@@ -6,6 +6,8 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import './index.css'
+import AddTask from './components/AddTask.jsx';
+import UpdateTask from './components/UpdateTask.jsx';
 
 const router = createBrowserRouter([
   {
@@ -13,10 +15,12 @@ const router = createBrowserRouter([
     element: <App></App>,
   },
   {
-    path: "add-task"
+    path: "add-task",
+    element: <AddTask></AddTask>
   },
   {
-    path: "update-task"
+    path: "update-task",
+    element: <UpdateTask></UpdateTask>
   }
 ]);
 
