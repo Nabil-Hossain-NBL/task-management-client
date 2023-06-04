@@ -1,5 +1,17 @@
+import { useState } from 'react';
 import Swal from 'sweetalert2'
 const AddTask = () => {
+
+    const [value, setValue] = useState('pending')
+    const handleSeclect = (event) => {
+        const value = event.target.value;
+        setValue(value)
+    }
+
+    if (value === "Choose here") {
+        setValue('pending')
+    }
+
     const handleTask = event => {
         event.preventDefault();
 
@@ -7,7 +19,7 @@ const AddTask = () => {
         const title = form.title.value;
         const description = form.description.value;
 
-        const newTask = {title, description}
+        const newTask = { title, description, value }
         console.log(newTask);
 
         // sending data to the server
@@ -18,22 +30,22 @@ const AddTask = () => {
             },
             body: JSON.stringify(newTask)
         })
-        .then(res => res.json())
-        .then(data => {
-            console.log(data);
-            if (data.insertedId) {
-                Swal.fire({
-                    title: 'Success!',
-                    text: 'New task added',
-                    icon: 'success',
-                    confirmButtonText: 'Cool'
-                  })
-            }
-            form.reset()
-        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.insertedId) {
+                    Swal.fire({
+                        title: 'Success!',
+                        text: 'New task added',
+                        icon: 'success',
+                        confirmButtonText: 'Cool'
+                    })
+                }
+                form.reset()
+            })
     }
     return (
-        <div>
+        <div className="text-black h-screen">
             <form onSubmit={handleTask}>
                 <div className="flex-col w-1/3 m-auto">
                     <div className="form-control">
@@ -52,6 +64,16 @@ const AddTask = () => {
                         <label className="input-group">
                             <span>Description</span>
                             <input type="text" placeholder="description" className="input w-full input-bordered" name="description" />
+                        </label>
+                    </div>
+                    <div className="input-group justify-center my-5">
+                        <label className="input-group">
+                            <span>Status</span>
+                            <select onChange={handleSeclect} >
+                                <option value="Choose here" >Choose here</option>
+                                <option name="status" required value="pending">Pending</option>
+                                <option name="status" required value="complete">Complete</option>
+                            </select>
                         </label>
                     </div>
                     <input className="btn btn-block" type="submit" value="Add Task" />

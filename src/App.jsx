@@ -1,22 +1,34 @@
 
-import { useLoaderData } from 'react-router-dom'
 import './App.css'
+import Navbar from './components/Navbar';
 import TaskCard from './components/TaskCard';
+import { useEffect, useState } from 'react';
 
 function App() {
-  const tasks = useLoaderData();
+
+  const [tasks, setTasks] = useState([]);
+  useEffect(() => {
+    fetch('http://localhost:5000/task')
+      .then((res) => res.json())
+      .then((data) => {
+        setTasks(data);
+      });
+  }, [tasks]);
 
   return (
     <>
-    <h1 className="text-3xl font-bold underline">
-      You Have {tasks.length} task
-    </h1>
-    {
-      tasks.map(task => <TaskCard
-      key={task._id}
-      task={task}
-      ></TaskCard> )
-    }
+
+      <Navbar></Navbar>
+
+      <h1 className="text-3xl text-center font-bold underline">
+        You Have {tasks?.length} task
+      </h1>
+      {
+        tasks.map(task => <TaskCard
+          key={task._id}
+          task={task}
+        ></TaskCard>)
+      }
     </>
   )
 }
