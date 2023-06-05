@@ -21,7 +21,7 @@ function App() {
       <Navbar></Navbar>
 
       <h1 className="text-3xl text-center font-bold underline">
-        You Have {tasks?.length} task
+        You Have {tasks?.length} Task In List
       </h1>
       {
         tasks.map(task => <TaskCard

@@ -56,6 +56,7 @@ const UpdatedTask = () => {
         <>
             <Navbar></Navbar>
             <div className="text-black h-screen">
+                <h1 className="text-white font-bold text-center text-4xl">Update Selected Task</h1>
                 <form onSubmit={handleUpdateTask}>
                     <div className="flex-col w-1/3 m-auto">
                         <div className="form-control">

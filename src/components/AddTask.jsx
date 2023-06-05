@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Swal from 'sweetalert2'
+import Navbar from './Navbar';
 const AddTask = () => {
 
     const [value, setValue] = useState('pending')
@@ -45,41 +46,45 @@ const AddTask = () => {
             })
     }
     return (
-        <div className="text-black h-screen">
-            <form onSubmit={handleTask}>
-                <div className="flex-col w-1/3 m-auto">
-                    <div className="form-control">
-                        <label className="label">
-                            <span className="label-text">Task Title</span>
-                        </label>
-                        <label className="input-group">
-                            <span>Title</span>
-                            <input type="text" required placeholder="title" className="input w-full input-bordered" name="title" />
-                        </label>
+        <>
+            <Navbar></Navbar>
+            <div className="text-black h-screen">
+                <h1 className="text-white font-bold text-center text-4xl">Add A New Task</h1>
+                <form onSubmit={handleTask}>
+                    <div className="flex-col w-1/3 m-auto">
+                        <div className="form-control">
+                            <label className="label">
+                                <span className="label-text">Task Title</span>
+                            </label>
+                            <label className="input-group">
+                                <span>Title</span>
+                                <input type="text" required placeholder="title" className="input w-full input-bordered" name="title" />
+                            </label>
+                        </div>
+                        <div className="form-control mb-5">
+                            <label className="label">
+                                <span className="label-text">Description</span>
+                            </label>
+                            <label className="input-group">
+                                <span>Description</span>
+                                <input type="text" placeholder="description" className="input w-full input-bordered" name="description" />
+                            </label>
+                        </div>
+                        <div className="input-group justify-center my-5">
+                            <label className="input-group">
+                                <span>Status</span>
+                                <select onChange={handleSeclect} >
+                                    <option value="Choose here" >Choose here</option>
+                                    <option name="status" required value="pending">Pending</option>
+                                    <option name="status" required value="complete">Complete</option>
+                                </select>
+                            </label>
+                        </div>
+                        <input className="btn btn-block" type="submit" value="Add Task" />
                     </div>
-                    <div className="form-control mb-5">
-                        <label className="label">
-                            <span className="label-text">Description</span>
-                        </label>
-                        <label className="input-group">
-                            <span>Description</span>
-                            <input type="text" placeholder="description" className="input w-full input-bordered" name="description" />
-                        </label>
-                    </div>
-                    <div className="input-group justify-center my-5">
-                        <label className="input-group">
-                            <span>Status</span>
-                            <select onChange={handleSeclect} >
-                                <option value="Choose here" >Choose here</option>
-                                <option name="status" required value="pending">Pending</option>
-                                <option name="status" required value="complete">Complete</option>
-                            </select>
-                        </label>
-                    </div>
-                    <input className="btn btn-block" type="submit" value="Add Task" />
-                </div>
-            </form>
-        </div>
+                </form>
+            </div>
+        </>
     )
 }
 

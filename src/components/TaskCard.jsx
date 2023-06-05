@@ -38,7 +38,7 @@ const TaskCard = ({ task }) => {
         <div>
             <div className="card card-side bg-neutral w-2/3 mx-auto my-4 shadow-xl">
                 <div className="card-body">
-                    <h2 className="card-title">{title}</h2>
+                    <h2 className="card-title underline">{title}</h2>
                     <p>{description}</p>
                     <div className="card-actions justify-center">
                     <span className= {value==='pending'? "bg-warning p-2 rounded-md text-black" : "bg-white text-black p-2 rounded-md " }>{value}</span>
@@ -46,7 +46,7 @@ const TaskCard = ({ task }) => {
                 </div>
                 <div className="card-actions m-5 justify-end">
                     <div className="btn-group btn-group-vertical space-y-4">
-                        <Link to={`update-task/${_id}`}><button className="btn bg-white ">edit</button></Link>
+                        <Link to={`update-task/${_id}`}><button className="btn bg-white ">update</button></Link>
                         <button
                             onClick={() => handleDelete(_id)}
                             className="btn bg-warning ">X</button>
