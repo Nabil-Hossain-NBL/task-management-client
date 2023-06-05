@@ -28,7 +28,7 @@ const UpdatedTask = () => {
         console.log(updatedTask);
 
         // sending data to the server
-        fetch(`http://localhost:5000/task/${_id}`, {
+        fetch(`https://task-management-server-mu.vercel.app/task/${_id}`, {
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json'
@@ -75,7 +75,7 @@ const UpdatedTask = () => {
                         <div className="input-group justify-center my-5 ">
                             <label className="input-group">
                                 <span>Status</span>
-                                <select onChange={handleSeclect} >
+                                <select value={value} onChange={handleSeclect} >
                                     <option value="Choose here" >Choose here</option>
                                     <option value="pending">Pending</option>
                                     <option value="complete">Complete</option>

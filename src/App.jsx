@@ -8,7 +8,7 @@ function App() {
 
   const [tasks, setTasks] = useState([]);
   useEffect(() => {
-    fetch('http://localhost:5000/task')
+    fetch('https://task-management-server-mu.vercel.app/task')
       .then((res) => res.json())
       .then((data) => {
         setTasks(data);
