@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
 import Navbar from "./Navbar";
@@ -8,6 +8,10 @@ const UpdatedTask = () => {
     const { _id, title, description } = task;
 
     const [value, setValue] = useState('pending')
+
+    useEffect(() => {
+        setValue(task.value);
+    }, [task])
     const handleSeclect = (event) => {
         const value = event.target.value;
         setValue(value)
