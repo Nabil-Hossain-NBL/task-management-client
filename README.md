@@ -1,7 +1,7 @@
-Live link- https://assignment11-151a4.web.app/
-
-Features
-Responsive Design
-Product display based on category 
-Multiple user role- User, Seller, Admin
-CRUD Operations
+Live link- https://assignment11-151a4.web.app/<br />
+<br />
+Features<br />
+Responsive Design<br />
+Product display based on category <br />
+Multiple user role- User, Seller, Admin<br />
+CRUD Operations<br />
